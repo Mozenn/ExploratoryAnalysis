@@ -38,3 +38,6 @@ res_medians <- reduce(dfs_medians,bind_rows)
 
 ggplot(res_means, aes(genre,meanOwners,fill=genre)) + geom_col(color= "black")
 ggplot(res_medians, aes(genre,medianOwners,fill=genre)) + geom_col(color= "black")
+
+
+# TODO genre of top 10 most owned games 
