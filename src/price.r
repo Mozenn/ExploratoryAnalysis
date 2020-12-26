@@ -11,6 +11,7 @@ data_f <- data_f %>% filter(nbOwner != 0)
 data_f <- data_f %>% filter(nbOwner < 4000000)
 
 ggplot(data_f, aes(nbOwner,price)) + geom_point(aes(color= price)) 
+# TODO improve title, axis name, ... 
 
 data_free <- data %>% filter(genreisfreetoplay == "true" & categoryinapppurchase == "true" & steamspyowners != 0)
 free_medians <- data_free %>% summarise(type = "freetoplay", medianOwners = median(steamspyowners))
@@ -25,3 +26,4 @@ res_median <- bind_rows(free_medians,premium_medians)
 
 ggplot(res_mean, aes(type,meanOwners,fill=type)) + geom_col(color= "black")
 ggplot(res_median, aes(type,medianOwners,fill=type)) + geom_col(color= "black")
+# TODO improve title, axis name, ... 
