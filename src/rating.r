@@ -8,5 +8,6 @@ colnames(data_f) <- c("nbOwner","rating")
 data_f <- data_f %>% filter(nbOwner != 0 & rating != 0) 
 data_alt <- data_f %>% filter(nbOwner < 4000000)
 
-ggplot(data_alt, aes(nbOwner,rating)) + geom_point(aes(color= rating)) + scale_colour_gradientn(colours=c("red","orange","green"))
-# TODO improve title, axis name, ... 
+plot <- ggplot(data_alt, aes(nbOwner,rating)) + geom_point(aes(color= rating)) + scale_colour_gradientn(colours=c("red","orange","green"))
+plot + ggtitle("Correlation between rating and number of owners") + labs(x = "owners number", y="rating")
+

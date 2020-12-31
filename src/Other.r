@@ -21,5 +21,5 @@ res_c <- data_fc %>% group_by(releaseyear) %>% summarise(meanOwners = mean(steam
 
 test <- res_c$releaseyear
 ggplot(res, aes(releaseyear,meanOwners)) + geom_line(color="#2C7CAA", size=1) + geom_point(color="#0C3F5B",size=2) + ggtitle("Mean owner count by release year")
-ggplot(res_c, aes(releaseyear,meanOwners)) + geom_line(color="#2C7CAA", size=1) + geom_point(color="#0C3F5B",size=2) + ggtitle("Mean owner count by release year") + scale_x_continuous(breaks=res_c$releaseyear)
-# TODO improve title, axis name, ... 
+plot <- ggplot(res_c, aes(releaseyear,meanOwners)) + geom_line(color="#2C7CAA", size=1) + geom_point(color="#0C3F5B",size=2) + ggtitle("Mean owner count by release year") + scale_x_continuous(breaks=res_c$releaseyear)
+plot + ggtitle("Mean owners number by release year") + labs(x = "release year", y="mean owners number")

@@ -10,8 +10,8 @@ colnames(data_f) <- c("nbOwner","price")
 data_f <- data_f %>% filter(nbOwner != 0) 
 data_f <- data_f %>% filter(nbOwner < 4000000)
 
-ggplot(data_f, aes(nbOwner,price)) + geom_point(aes(color= price)) 
-# TODO improve title, axis name, ... 
+plot_distribution <- ggplot(data_f, aes(nbOwner,price)) + geom_point(aes(color= price)) 
+plot_distribution + ggtitle("Correlation between price and number of owners") + labs(x = "owners number", y="price")
 
 data_free <- data %>% filter(genreisfreetoplay == "true" & categoryinapppurchase == "true" & steamspyowners != 0)
 free_medians <- data_free %>% summarise(type = "freetoplay", medianOwners = median(steamspyowners))
@@ -24,6 +24,6 @@ premium_means <- data_premium %>% summarise(type = "premium", meanOwners = mean(
 res_mean <- bind_rows(free_means,premium_means)
 res_median <- bind_rows(free_medians,premium_medians)
 
-ggplot(res_mean, aes(type,meanOwners,fill=type)) + geom_col(color= "black")
+plot_mean <- ggplot(res_mean, aes(type,meanOwners,fill=type)) + geom_col(color= "black")
 ggplot(res_median, aes(type,medianOwners,fill=type)) + geom_col(color= "black")
-# TODO improve title, axis name, ... 
+plot_mean + ggtitle("Free To Play vs Premium") + labs(x = "type", y="mean owners number")

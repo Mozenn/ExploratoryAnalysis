@@ -36,9 +36,8 @@ dfs_medians <- names %>% map(~ create_genre_medians(data_f,.x))
 res_medians <- reduce(dfs_medians,bind_rows)
 
 
-ggplot(res_means, aes(genre,meanOwners,fill=genre)) + geom_col(color= "black")
-ggplot(res_medians, aes(genre,medianOwners,fill=genre)) + geom_col(color= "black")
-# TODO improve title, axis name, ... 
+plot_mean <- ggplot(res_means, aes(genre,meanOwners,fill=genre)) + geom_col(color= "black")
+plot_median <- ggplot(res_medians, aes(genre,medianOwners,fill=genre)) + geom_col(color= "black")
 
-
-# TODO genre of top 10 most owned games 
+plot_mean + ggtitle("Mean number of owners per genre") + labs(x = "genre", y="mean owners count")
+plot_median + ggtitle("Median number of owners per genre") + labs(x = "genre", y="median owners count")

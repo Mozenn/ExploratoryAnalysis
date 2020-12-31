@@ -35,5 +35,5 @@ res$owners_count <- factor(res$owners_count,levels = categories, ordered = TRUE)
 
 # plot 
 
-ggplot(res, aes(owners_count,games_count)) + geom_col(color= "black",fill="#FF9999")
-# TODO improve title, axis name, ... 
+plot <- ggplot(res, aes(owners_count,games_count)) + geom_col(color= "black",fill="#FF9999")
+plot + ggtitle("Distribution of the number of owners per game") + labs(x = "owners count", y="games count")
